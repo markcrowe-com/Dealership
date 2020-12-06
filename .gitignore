@@ -1,2 +1,4 @@
 
 *.bak
+/Dealership.RestAPI.jsp/src/main/resources/META-INF/persistence.xml
+/Dealership.RestAPI.jsp/target/
