@@ -8,6 +8,7 @@
 	<body>
 		<h1>Dealership</h1>
 		<table>
+			<tr><td><a href="cars">Cars</a></td></tr>
 			<tr><td><a href="carmodels">Car Models</a></td></tr>
 		</table>
 	</body>

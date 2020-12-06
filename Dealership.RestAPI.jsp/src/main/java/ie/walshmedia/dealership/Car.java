@@ -6,18 +6,14 @@
 package ie.walshmedia.dealership;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -27,14 +23,16 @@ import javax.validation.constraints.Size;
  * @author Keith
  */
 @Entity
-@Table(name = "carmaker")
+@Table(name = "car")
 @NamedQueries(
 {
-    @NamedQuery(name = "CarMaker.findAll", query = "SELECT c FROM CarMaker c"),
-    @NamedQuery(name = "CarMaker.findById", query = "SELECT c FROM CarMaker c WHERE c.id = :id"),
-    @NamedQuery(name = "CarMaker.findByName", query = "SELECT c FROM CarMaker c WHERE c.name = :name")
+    @NamedQuery(name = "Car.findAll", query = "SELECT c FROM Car c"),
+    @NamedQuery(name = "Car.findById", query = "SELECT c FROM Car c WHERE c.id = :id"),
+    @NamedQuery(name = "Car.findByRegistrationNumber", query = "SELECT c FROM Car c WHERE c.registrationNumber = :registrationNumber"),
+    @NamedQuery(name = "Car.findByValue", query = "SELECT c FROM Car c WHERE c.value = :value"),
+    @NamedQuery(name = "Car.findByOwnerName", query = "SELECT c FROM Car c WHERE c.ownerName = :ownerName")
 })
-public class CarMaker implements Serializable
+public class Car implements Serializable
 {
 
     private static final long serialVersionUID = 1L;
@@ -46,24 +44,33 @@ public class CarMaker implements Serializable
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "Name")
-    private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "carMaker", fetch = FetchType.LAZY)
-    private Collection<CarModel> carModelCollection;
+    @Column(name = "RegistrationNumber")
+    private String registrationNumber;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "Value")
+    private double value;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "OwnerName")
+    private String ownerName;
 
-    public CarMaker()
+    public Car()
     {
     }
 
-    public CarMaker(Integer id)
+    public Car(Integer id)
     {
 	this.id = id;
     }
 
-    public CarMaker(Integer id, String name)
+    public Car(Integer id, String registrationNumber, double value, String ownerName)
     {
 	this.id = id;
-	this.name = name;
+	this.registrationNumber = registrationNumber;
+	this.value = value;
+	this.ownerName = ownerName;
     }
 
     public Integer getId()
@@ -76,24 +83,34 @@ public class CarMaker implements Serializable
 	this.id = id;
     }
 
-    public String getName()
+    public String getRegistrationNumber()
     {
-	return name;
+	return registrationNumber;
     }
 
-    public void setName(String name)
+    public void setRegistrationNumber(String registrationNumber)
     {
-	this.name = name;
+	this.registrationNumber = registrationNumber;
     }
 
-    public Collection<CarModel> getCarModelCollection()
+    public double getValue()
     {
-	return carModelCollection;
+	return value;
     }
 
-    public void setCarModelCollection(Collection<CarModel> carModelCollection)
+    public void setValue(double value)
     {
-	this.carModelCollection = carModelCollection;
+	this.value = value;
+    }
+
+    public String getOwnerName()
+    {
+	return ownerName;
+    }
+
+    public void setOwnerName(String ownerName)
+    {
+	this.ownerName = ownerName;
     }
 
     @Override
@@ -108,11 +125,11 @@ public class CarMaker implements Serializable
     public boolean equals(Object object)
     {
 	// TODO: Warning - this method won't work in the case the id fields are not set
-	if (!(object instanceof CarMaker))
+	if (!(object instanceof Car))
 	{
 	    return false;
 	}
-	CarMaker other = (CarMaker) object;
+	Car other = (Car) object;
 	if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)))
 	{
 	    return false;
@@ -123,7 +140,7 @@ public class CarMaker implements Serializable
     @Override
     public String toString()
     {
-	return "ie.walshmedia.dealership.repositories.CarMaker[ id=" + id + " ]";
+	return "ie.walshmedia.dealership.Car[ id=" + id + " ]";
     }
     
 }

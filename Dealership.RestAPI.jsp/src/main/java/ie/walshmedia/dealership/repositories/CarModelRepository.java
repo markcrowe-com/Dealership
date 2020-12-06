@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.criteria.CriteriaQuery;
 
 /**
  *
@@ -14,37 +15,38 @@ import javax.persistence.Persistence;
 public class CarModelRepository
 {
 //	@PersistenceContext(unitName = "Dealership")
-    private EntityManager entityManager;
 
-    public CarModelRepository()
-    {
-	entityManager = Persistence.createEntityManagerFactory("Dealership").createEntityManager();
-    }
+	private EntityManager entityManager;
 
-    public CarModel getCarModelById(int id)
-    {
-	return getEntityManager().find(CarModel.class, id);
-    }
+	public CarModelRepository()
+	{
+		entityManager = Persistence.createEntityManagerFactory("Dealership").createEntityManager();
+	}
 
-    public List<CarModel> getCarModels()
-    {
-	javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-	cq.select(cq.from(CarModel.class));
-	return getEntityManager().createQuery(cq).getResultList();
-    }
+	public CarModel getCarModelById(int id)
+	{
+		return getEntityManager().find(CarModel.class, id);
+	}
 
-    public List<CarModel> getCarModelRange(int[] range)
-    {
-	javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-	cq.select(cq.from(CarModel.class));
-	javax.persistence.Query q = getEntityManager().createQuery(cq);
-	q.setMaxResults(range[1] - range[0] + 1);
-	q.setFirstResult(range[0]);
-	return q.getResultList();
-    }
+	public List<CarModel> getCarModels()
+	{
+		CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+		cq.select(cq.from(CarModel.class));
+		return getEntityManager().createQuery(cq).getResultList();
+	}
 
-    protected EntityManager getEntityManager()
-    {
-	return entityManager;
-    }
+	public List<CarModel> getCarModelRange(int[] range)
+	{
+		javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+		cq.select(cq.from(CarModel.class));
+		javax.persistence.Query q = getEntityManager().createQuery(cq);
+		q.setMaxResults(range[1] - range[0] + 1);
+		q.setFirstResult(range[0]);
+		return q.getResultList();
+	}
+
+	protected EntityManager getEntityManager()
+	{
+		return entityManager;
+	}
 }

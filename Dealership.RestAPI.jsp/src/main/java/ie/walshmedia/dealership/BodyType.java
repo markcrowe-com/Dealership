@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -45,7 +46,7 @@ public class BodyType implements Serializable
     @Size(min = 1, max = 45)
     @Column(name = "Name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bodyType")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bodyType", fetch = FetchType.LAZY)
     private Collection<CarModel> carModelCollection;
 
     public BodyType()
@@ -120,7 +121,7 @@ public class BodyType implements Serializable
     @Override
     public String toString()
     {
-	return "ie.walshmedia.dealership.BodyType[ id=" + id + " ]";
+	return "ie.walshmedia.dealership.repositories.BodyType[ id=" + id + " ]";
     }
     
 }

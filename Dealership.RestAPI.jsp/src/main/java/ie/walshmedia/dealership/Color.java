@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -47,7 +48,7 @@ public class Color implements Serializable
     @Size(min = 1, max = 45)
     @Column(name = "Name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "color")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "color", fetch = FetchType.LAZY)
     private Collection<CarModel> carModelCollection;
 
     public Color()
@@ -122,7 +123,7 @@ public class Color implements Serializable
     @Override
     public String toString()
     {
-	return "ie.walshmedia.dealership.Color[ id=" + id + " ]";
+	return "ie.walshmedia.dealership.repositories.Color[ id=" + id + " ]";
     }
     
 }

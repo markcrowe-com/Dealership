@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,13 +52,13 @@ public class CarModel implements Serializable
     @Column(name = "EngineLitres")
     private Double engineLitres;
     @JoinColumn(name = "BodyType", referencedColumnName = "Id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private BodyType bodyType;
     @JoinColumn(name = "CarMaker", referencedColumnName = "Id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private CarMaker carMaker;
     @JoinColumn(name = "Color", referencedColumnName = "Id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Color color;
 
     public CarModel()
@@ -166,7 +167,7 @@ public class CarModel implements Serializable
     @Override
     public String toString()
     {
-	return "ie.walshmedia.dealership.CarModel[ id=" + id + " ]";
+	return "ie.walshmedia.dealership.repositories.CarModel[ id=" + id + " ]";
     }
     
 }
