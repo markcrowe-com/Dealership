@@ -4,7 +4,7 @@ import ie.walshmedia.dealership.CarModel;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -13,14 +13,15 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class CarModelRepository
 {
-    @PersistenceContext(unitName = "FawltyTowers")
+//	@PersistenceContext(unitName = "Dealership")
     private EntityManager entityManager;
 
     public CarModelRepository()
     {
+	entityManager = Persistence.createEntityManagerFactory("Dealership").createEntityManager();
     }
 
-    public CarModel  getCarModelById(int id)
+    public CarModel getCarModelById(int id)
     {
 	return getEntityManager().find(CarModel.class, id);
     }
@@ -41,9 +42,9 @@ public class CarModelRepository
 	q.setFirstResult(range[0]);
 	return q.getResultList();
     }
-    
+
     protected EntityManager getEntityManager()
     {
 	return entityManager;
-    }  
+    }
 }
