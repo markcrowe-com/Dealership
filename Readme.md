@@ -28,7 +28,10 @@ Run the project
 
 ## React.js
 
-After cloning the projcet in the terminal enter
+After cloning the projcet in the terminal enter, run once
+ `npm install`
+
+ To start the react app
 
  `npm start`
 
