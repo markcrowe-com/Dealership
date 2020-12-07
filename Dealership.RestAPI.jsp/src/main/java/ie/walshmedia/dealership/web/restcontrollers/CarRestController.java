@@ -20,13 +20,28 @@ public class CarRestController
 		repository = new CarRepository();
 	}
 
+	
+	
 	@GetMapping("/{id}")
 	public Car getCarById(@PathVariable("id") int id)
 	{
 		return repository.getCarById(id);
 	}
 	
-		@GetMapping
+	@GetMapping("/reg/{registrationNumber}")
+	public Car getCarByRegistrationNumber(@PathVariable("registrationNumber") String registrationNumber)
+	{
+		return repository.getCarByRegistrationNumber(registrationNumber);
+	}
+
+	@GetMapping("/top10")
+	@Produces(MediaType.APPLICATION_JSON_VALUE)
+	public List<Car> getTop10Cars()
+	{
+		return repository.getTop10Cars();
+	}
+
+	@GetMapping
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
 	public List<Car> getCars()
 	{
