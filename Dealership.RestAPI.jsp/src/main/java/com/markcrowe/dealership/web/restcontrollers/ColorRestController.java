@@ -1,7 +1,7 @@
-package ie.walshmedia.dealership.web.restcontrollers;
+package com.markcrowe.dealership.web.restcontrollers;
 
-import ie.walshmedia.dealership.Color;
-import ie.walshmedia.dealership.repositories.ColorRepository;
+import com.markcrowe.dealership.Color;
+import com.markcrowe.dealership.repositories.ColorRepository;
 import java.util.List;
 import javax.ws.rs.Produces;
 import org.springframework.http.MediaType;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/colors")
-public class ColorModelRestController
+public class ColorRestController
 {
-	public ColorModelRestController()
+	public ColorRestController()
 	{
 		repository = new ColorRepository();
 	}

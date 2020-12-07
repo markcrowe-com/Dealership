@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2020 Mark Crowe <https://github.com/markcrowe-com>. All rights reserved.
  */
-package ie.walshmedia.dealership.web;
+package com.markcrowe.dealership.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

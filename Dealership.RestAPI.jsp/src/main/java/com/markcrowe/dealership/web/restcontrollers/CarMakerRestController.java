@@ -1,7 +1,7 @@
-package ie.walshmedia.dealership.web.restcontrollers;
+package com.markcrowe.dealership.web.restcontrollers;
 
-import ie.walshmedia.dealership.CarMaker;
-import ie.walshmedia.dealership.repositories.CarMakerRepository;
+import com.markcrowe.dealership.CarMaker;
+import com.markcrowe.dealership.repositories.CarMakerRepository;
 import java.util.List;
 import javax.ws.rs.Produces;
 import org.springframework.http.MediaType;

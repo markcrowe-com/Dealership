@@ -1,4 +1,4 @@
-package ie.walshmedia.dealership;
+package com.markcrowe.dealership;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -6,8 +6,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -17,20 +15,20 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "carmaker")
+@Table(name = "bodytype")
 @NamedQueries(
 		{
-			@NamedQuery(name = "CarMaker.findAll", query = "SELECT c FROM CarMaker c"),
-			@NamedQuery(name = "CarMaker.findById", query = "SELECT c FROM CarMaker c WHERE c.id = :id"),
-			@NamedQuery(name = "CarMaker.findByName", query = "SELECT c FROM CarMaker c WHERE c.name = :name")
+			@NamedQuery(name = "BodyType.findAll", query = "SELECT b FROM BodyType b"),
+			@NamedQuery(name = "BodyType.findById", query = "SELECT b FROM BodyType b WHERE b.id = :id"),
+			@NamedQuery(name = "BodyType.findByName", query = "SELECT b FROM BodyType b WHERE b.name = :name")
 		})
-public class CarMaker implements Serializable
+public class BodyType implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
+	@NotNull
 	@Column(name = "Id")
 	private Integer id;
 	@Basic(optional = false)
@@ -38,19 +36,19 @@ public class CarMaker implements Serializable
 	@Size(min = 1, max = 45)
 	@Column(name = "Name")
 	private String name;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "carMaker")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "bodyType")
 	private Collection<CarModel> carModelCollection;
 
-	public CarMaker()
+	public BodyType()
 	{
 	}
 
-	public CarMaker(Integer id)
+	public BodyType(Integer id)
 	{
 		this.id = id;
 	}
 
-	public CarMaker(Integer id, String name)
+	public BodyType(Integer id, String name)
 	{
 		this.id = id;
 		this.name = name;
@@ -98,11 +96,11 @@ public class CarMaker implements Serializable
 	public boolean equals(Object object)
 	{
 		// TODO: Warning - this method won't work in the case the id fields are not set
-		if(!(object instanceof CarMaker))
+		if(!(object instanceof BodyType))
 		{
 			return false;
 		}
-		CarMaker other = (CarMaker) object;
+		BodyType other = (BodyType) object;
 		if((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)))
 		{
 			return false;
@@ -113,7 +111,7 @@ public class CarMaker implements Serializable
 	@Override
 	public String toString()
 	{
-		return "ie.walshmedia.dealership.CarMaker[ id=" + id + " ]";
+		return "com.markcrowe.dealership.BodyType[ id=" + id + " ]";
 	}
 
 }

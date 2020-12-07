@@ -1,4 +1,4 @@
-package ie.walshmedia.dealership;
+package com.markcrowe.dealership;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -157,7 +157,7 @@ public class CarModel implements Serializable
 	@Override
 	public String toString()
 	{
-		return "ie.walshmedia.dealership.CarModel[ id=" + id + " ]";
+		return "com.markcrowe.dealership.CarModel[ id=" + id + " ]";
 	}
 
 }

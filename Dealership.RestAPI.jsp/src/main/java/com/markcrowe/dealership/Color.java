@@ -1,4 +1,4 @@
-package ie.walshmedia.dealership;
+package com.markcrowe.dealership;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -113,7 +113,7 @@ public class Color implements Serializable
 	@Override
 	public String toString()
 	{
-		return "ie.walshmedia.dealership.Color[ id=" + id + " ]";
+		return "com.markcrowe.dealership.Color[ id=" + id + " ]";
 	}
 
 }

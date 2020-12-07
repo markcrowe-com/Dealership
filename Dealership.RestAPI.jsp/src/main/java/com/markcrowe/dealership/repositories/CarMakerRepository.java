@@ -1,7 +1,7 @@
-package ie.walshmedia.dealership.repositories;
+package com.markcrowe.dealership.repositories;
 
-import ie.walshmedia.RepositoryBase;
-import ie.walshmedia.dealership.CarMaker;
+import com.markcrowe.RepositoryBase;
+import com.markcrowe.dealership.CarMaker;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;

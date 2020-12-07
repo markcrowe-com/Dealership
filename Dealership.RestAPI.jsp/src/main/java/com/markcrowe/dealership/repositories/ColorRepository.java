@@ -1,33 +1,33 @@
-package ie.walshmedia.dealership.repositories;
+package com.markcrowe.dealership.repositories;
 
-import ie.walshmedia.RepositoryBase;
-import ie.walshmedia.dealership.BodyType;
+import com.markcrowe.RepositoryBase;
+import com.markcrowe.dealership.Color;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
-public class BodyTypeRepository extends RepositoryBase<BodyType>
+public class ColorRepository extends RepositoryBase<Color>
 {
 	//@PersistenceContext(unitName = "Dealership")
 	private final EntityManager entityManager;
 
-	public BodyTypeRepository()
+	public ColorRepository()
 	{
-		super(BodyType.class);
+		super(Color.class);
 		entityManager = Persistence.createEntityManagerFactory("Dealership").createEntityManager();
 	}
 
-	public BodyType getBodyTypeById(int id)
+	public Color getColorById(int id)
 	{
 		return super.getEntityById(id);
 	}
 
-	public List<BodyType> getBodyTypes()
+	public List<Color> getColors()
 	{
 		return super.getList();
 	}
 
-	public List<BodyType> getBodyTypes(int startPosition, int endPosition)
+	public List<Color> getColors(int startPosition, int endPosition)
 	{
 		return super.getList(startPosition, endPosition);
 

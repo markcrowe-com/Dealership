@@ -1,4 +1,4 @@
-package ie.walshmedia;
+package com.markcrowe;
 
 import java.util.List;
 import javax.persistence.EntityManager;
