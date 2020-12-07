@@ -32,9 +32,9 @@ public class CarRepository
 		return getEntityManager().find(Car.class, id);
 	}
 
-	public Car getCarByRegistrationNumber(String registrationNumber)
+	public  List<Car> getCarByRegistrationNumber(String registrationNumber)
 	{
-		return getEntityManager().createNamedQuery("Car.findByRegistrationNumber", Car.class).setParameter("registrationNumber", registrationNumber).getSingleResult();
+		return getEntityManager().createNamedQuery("Car.findByRegistrationNumber", Car.class).setParameter("registrationNumber", registrationNumber).getResultList();
 	}
 
 	public Car getCarByValue(String registrationNumber)

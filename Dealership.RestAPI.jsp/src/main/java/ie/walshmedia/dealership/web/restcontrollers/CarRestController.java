@@ -29,7 +29,7 @@ public class CarRestController
 	}
 	
 	@GetMapping("/reg/{registrationNumber}")
-	public Car getCarByRegistrationNumber(@PathVariable("registrationNumber") String registrationNumber)
+	public  List<Car> getCarByRegistrationNumber(@PathVariable("registrationNumber") String registrationNumber)
 	{
 		return repository.getCarByRegistrationNumber(registrationNumber);
 	}
