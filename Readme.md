@@ -43,6 +43,9 @@ Open a Terminal
 
 Run `npx create-react-app dealership.react`
 
+For routing
+`npm install react-router-dom`
+
 This creates a directory 'dealership.react' for the react app and clones down the react javascript files
 
 In the terminal `cd .\dealership.react\`

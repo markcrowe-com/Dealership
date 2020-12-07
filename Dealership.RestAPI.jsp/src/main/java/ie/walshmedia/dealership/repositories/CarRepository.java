@@ -20,7 +20,7 @@ public class CarRepository
 {
 	//	@PersistenceContext(unitName = "Dealership")
 
-	private EntityManager entityManager;
+	private final EntityManager entityManager;
 
 	public CarRepository()
 	{
