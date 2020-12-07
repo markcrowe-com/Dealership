@@ -9,7 +9,10 @@
 		<h1>Dealership</h1>
 		<table>
 			<tr><td><a href="cars">Cars</a></td></tr>
+			<tr><td><a href="bodytypes">Body Types</a></td></tr>
+			<tr><td><a href="carmakers">Car Makers</a></td></tr>
 			<tr><td><a href="carmodels">Car Models</a></td></tr>
+			<tr><td><a href="colors">Colors</a></td></tr>
 		</table>
 	</body>
 </html>

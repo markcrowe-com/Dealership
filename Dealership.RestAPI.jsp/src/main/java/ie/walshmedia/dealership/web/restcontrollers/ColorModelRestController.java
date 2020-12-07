@@ -1,7 +1,7 @@
 package ie.walshmedia.dealership.web.restcontrollers;
 
-import ie.walshmedia.dealership.CarModel;
-import ie.walshmedia.dealership.repositories.CarModelRepository;
+import ie.walshmedia.dealership.Color;
+import ie.walshmedia.dealership.repositories.ColorRepository;
 import java.util.List;
 import javax.ws.rs.Produces;
 import org.springframework.http.MediaType;
@@ -11,34 +11,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/carmodels")
-public class CarModelRestController
+@RequestMapping(value = "/colors")
+public class ColorModelRestController
 {
-	public CarModelRestController()
+	public ColorModelRestController()
 	{
-		repository = new CarModelRepository();
+		repository = new ColorRepository();
 	}
 
 	@GetMapping("/{id}")
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
-	public CarModel getCarModelById(@PathVariable("id") int id)
+	public Color getColorById(@PathVariable("id") int id)
 	{
-		return repository.getCarModelById(id);
+		return repository.getColorById(id);
 	}
 
 	@GetMapping
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
-	public List<CarModel> getCarModels()
+	public List<Color> getColors()
 	{
-		return repository.getCarModels();
+		return repository.getColors();
 	}
 
 	@GetMapping("/{from}/{to}")
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
-	public List<CarModel> getCarModelRange(@PathVariable("from") int from, @PathVariable("to") int to)
+	public List<Color> getColorRange(@PathVariable("from") int from, @PathVariable("to") int to)
 	{
-		return repository.getCarModels(from, to);
+		return repository.getColors(from, to);
 	}
 
-	private final CarModelRepository repository;
+	private final ColorRepository repository;
 }

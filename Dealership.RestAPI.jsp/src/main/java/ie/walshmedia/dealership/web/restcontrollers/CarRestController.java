@@ -25,8 +25,8 @@ public class CarRestController
 	{
 		return repository.getCarById(id);
 	}
-	
-		@GetMapping
+
+	@GetMapping
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
 	public List<Car> getCars()
 	{
@@ -37,11 +37,8 @@ public class CarRestController
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
 	public List<Car> getCarsRange(@PathVariable("from") int from, @PathVariable("to") int to)
 	{
-		int[] range = new int[]
-		{
-			from, to
-		};
-		return repository.getCarsRange(range);
+		return repository.getCars(from, to);
+
 	}
 
 	private final CarRepository repository;

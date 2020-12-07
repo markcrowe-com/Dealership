@@ -1,7 +1,7 @@
 package ie.walshmedia.dealership.web.restcontrollers;
 
-import ie.walshmedia.dealership.CarModel;
-import ie.walshmedia.dealership.repositories.CarModelRepository;
+import ie.walshmedia.dealership.CarMaker;
+import ie.walshmedia.dealership.repositories.CarMakerRepository;
 import java.util.List;
 import javax.ws.rs.Produces;
 import org.springframework.http.MediaType;
@@ -11,34 +11,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/carmodels")
-public class CarModelRestController
+@RequestMapping(value = "/carmakers")
+public class CarMakerRestController
 {
-	public CarModelRestController()
+	public CarMakerRestController()
 	{
-		repository = new CarModelRepository();
+		repository = new CarMakerRepository();
 	}
 
 	@GetMapping("/{id}")
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
-	public CarModel getCarModelById(@PathVariable("id") int id)
+	public CarMaker getCarMakerById(@PathVariable("id") int id)
 	{
-		return repository.getCarModelById(id);
+		return repository.getCarMakerById(id);
 	}
 
 	@GetMapping
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
-	public List<CarModel> getCarModels()
+	public List<CarMaker> getCarMakers()
 	{
-		return repository.getCarModels();
+		return repository.getCarMakers();
 	}
 
 	@GetMapping("/{from}/{to}")
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
-	public List<CarModel> getCarModelRange(@PathVariable("from") int from, @PathVariable("to") int to)
+	public List<CarMaker> getCarMakerRange(@PathVariable("from") int from, @PathVariable("to") int to)
 	{
-		return repository.getCarModels(from, to);
+		return repository.getCarMakers(from, to);
 	}
 
-	private final CarModelRepository repository;
+	private final CarMakerRepository repository;
 }

@@ -1,7 +1,7 @@
 package ie.walshmedia.dealership.web.restcontrollers;
 
-import ie.walshmedia.dealership.CarModel;
-import ie.walshmedia.dealership.repositories.CarModelRepository;
+import ie.walshmedia.dealership.BodyType;
+import ie.walshmedia.dealership.repositories.BodyTypeRepository;
 import java.util.List;
 import javax.ws.rs.Produces;
 import org.springframework.http.MediaType;
@@ -11,34 +11,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/carmodels")
-public class CarModelRestController
+@RequestMapping(value = "/bodytypes")
+public class BodyTypeRestController
 {
-	public CarModelRestController()
+	public BodyTypeRestController()
 	{
-		repository = new CarModelRepository();
+		repository = new BodyTypeRepository();
 	}
 
 	@GetMapping("/{id}")
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
-	public CarModel getCarModelById(@PathVariable("id") int id)
+	public BodyType getBodyTypeById(@PathVariable("id") int id)
 	{
-		return repository.getCarModelById(id);
+		return repository.getBodyTypeById(id);
 	}
 
 	@GetMapping
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
-	public List<CarModel> getCarModels()
+	public List<BodyType> getBodyTypes()
 	{
-		return repository.getCarModels();
+		return repository.getBodyTypes();
 	}
 
 	@GetMapping("/{from}/{to}")
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
-	public List<CarModel> getCarModelRange(@PathVariable("from") int from, @PathVariable("to") int to)
+	public List<BodyType> getBodyTypeRange(@PathVariable("from") int from, @PathVariable("to") int to)
 	{
-		return repository.getCarModels(from, to);
+		return repository.getBodyTypes(from, to);
 	}
 
-	private final CarModelRepository repository;
+	private final BodyTypeRepository repository;
 }

@@ -1,33 +1,33 @@
 package ie.walshmedia.dealership.repositories;
 
 import ie.walshmedia.RepositoryBase;
-import ie.walshmedia.dealership.CarModel;
+import ie.walshmedia.dealership.BodyType;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
-public class CarModelRepository extends RepositoryBase<CarModel>
+public class BodyTypeRepository extends RepositoryBase<BodyType>
 {
 	//@PersistenceContext(unitName = "Dealership")
 	private final EntityManager entityManager;
 
-	public CarModelRepository()
+	public BodyTypeRepository()
 	{
-		super(CarModel.class);
+		super(BodyType.class);
 		entityManager = Persistence.createEntityManagerFactory("Dealership").createEntityManager();
 	}
 
-	public CarModel getCarModelById(int id)
+	public BodyType getBodyTypeById(int id)
 	{
 		return super.getEntityById(id);
 	}
 
-	public List<CarModel> getCarModels()
+	public List<BodyType> getBodyTypes()
 	{
 		return super.getList();
 	}
 
-	public List<CarModel> getCarModels(int startPosition, int endPosition)
+	public List<BodyType> getBodyTypes(int startPosition, int endPosition)
 	{
 		return super.getList(startPosition, endPosition);
 

@@ -14,8 +14,6 @@ public class WebSiteController
 	@RequestMapping(WebsiteMappings.HomePage)
 	public ModelAndView getHomePage()
 	{
-		System.out.println("getHomePage");
-
 		String viewName = WebsitePageViews.HomePage;
 		return new ModelAndView(viewName);
 	}

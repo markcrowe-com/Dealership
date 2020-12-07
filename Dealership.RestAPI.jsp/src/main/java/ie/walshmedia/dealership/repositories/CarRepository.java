@@ -1,54 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ie.walshmedia.dealership.repositories;
 
+import ie.walshmedia.RepositoryBase;
 import ie.walshmedia.dealership.Car;
-import ie.walshmedia.dealership.CarModel;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaQuery;
 
-/**
- *
- * @author Keith
- */
-public class CarRepository
+public class CarRepository extends RepositoryBase<Car>
 {
-	//	@PersistenceContext(unitName = "Dealership")
-
-	private EntityManager entityManager;
+	//@PersistenceContext(unitName = "Dealership")
+	private final EntityManager entityManager;
 
 	public CarRepository()
 	{
+		super(Car.class);
 		entityManager = Persistence.createEntityManagerFactory("Dealership").createEntityManager();
 	}
 
 	public Car getCarById(int id)
 	{
-		return getEntityManager().find(Car.class, id);
+		return super.getEntityById(id);
 	}
 
 	public List<Car> getCars()
 	{
-		CriteriaQuery criteriaQuery = getEntityManager().getCriteriaBuilder().createQuery();
-		criteriaQuery.select(criteriaQuery.from(Car.class));
-		return getEntityManager().createQuery(criteriaQuery).getResultList();
+		return super.getList();
 	}
 
-	public List<Car> getCarsRange(int[] range)
+	public List<Car> getCars(int startPosition, int endPosition)
 	{
-		CriteriaQuery criteriaQuery = getEntityManager().getCriteriaBuilder().createQuery();
-		criteriaQuery.select(criteriaQuery.from(Car.class));
-		javax.persistence.Query q = getEntityManager().createQuery(criteriaQuery);
-		q.setMaxResults(range[1] - range[0] + 1);
-		q.setFirstResult(range[0]);
-		return q.getResultList();
+		return super.getList(startPosition, endPosition);
+
 	}
 
+	@Override
 	protected EntityManager getEntityManager()
 	{
 		return entityManager;
