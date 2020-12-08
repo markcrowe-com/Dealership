@@ -4,7 +4,7 @@ import CarListView from './CarListView';
 class FindCarComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = { car: [], carRegistrationNumber: '' };
+        this.state = { carList: [], carRegistrationNumber: '' };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -16,12 +16,14 @@ class FindCarComponent extends Component {
                     <input id="carRegistrationNumber" onChange={this.handleChange} value={this.state.carRegistrationNumber} />
                     <button>Search</button>
                 </form>
-                <CarListView items={this.state.items} />
+                <CarListView carList={this.state.carList} />
             </div>
         );
     }
 
-
+    handleChange(eventArgs) {
+        this.setState({ carRegistrationNumber: eventArgs.target.value });
+    }
 
     handleSubmit(eventArgs) {
         eventArgs.preventDefault();
@@ -29,9 +31,8 @@ class FindCarComponent extends Component {
         {
             return;
         }
-        let carRegistrationNumber = this.state.carRegistrationNumber;
-        let requestUrl = `/cars/reg${carRegistrationNumber}?timestamp=${Date.now()}`;
-        getHttpRequestData(requestUrl);
+        let requestUrl = `/cars/reg/${this.state.carRegistrationNumber}?timestamp=${Date.now()}`;
+        this.getHttpRequestData(requestUrl);
     }
     getHttpRequestData(requestUrl) {
         let requestHeaders = {
@@ -62,63 +63,8 @@ class FindCarComponent extends Component {
             }
             );
     }
+
+
 }
 
 export default FindCarComponent;
-
-//import GuestSearchResultComponent from './GuestSearchResultComponent';
-
-let serviceUrl = 'entities.guests/';
-let serviceUrlJsonHeaders = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-};
-
-class GuestSearchComponent extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { items: [], text: '' };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-
-    handleChange(e) {
-        this.setState({ text: e.target.value });
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        if (!this.state.text.length)// if input is blank
-        {
-            return;
-        }
-        let guestId = this.state.text;
-        let url = `${serviceUrl}${guestId}?timestamp=${Date.now()}`;
-
-        fetch(url, {
-            headers: serviceUrlJsonHeaders
-
-        })
-            .then(result => result.json())
-            .then(json => {
-                this.setState(
-                    {
-                        items: json,
-                        text: this.state.text
-                    }
-                );
-            })
-            .catch(() => {
-                this.setState(
-                    {
-                        items: [],
-                        text: "Failed"//being economic with limited time, if nothing exists or a connection error, printing failure message to the text box. Didn't habe time to make a proper GUI 
-                    }
-                );
-            })
-            ;
-    }
-}
-
-export default GuestSearchComponent;

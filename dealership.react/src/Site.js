@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import Top10CarListComponent from "./Top10CarListComponent";
+import FindCarComponent from "./FindCarComponent";
 
 export default function Site() {
   return (
@@ -48,7 +49,12 @@ function Home() {
 }
 
 function Lookup() {
-  return <h2>Look up Car Registration Details</h2>;
+  return (
+    <div>
+      <h2>Look up Car Registration Details</h2>;
+      <FindCarComponent />
+    </div>
+  );
 }
 
 function Cars() {
