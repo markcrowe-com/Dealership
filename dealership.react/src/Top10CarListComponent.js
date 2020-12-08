@@ -11,16 +11,11 @@ class Top10CarListComponent extends Component {
         }
     }
 
-    getResponseJSON(response) {
-        return response.json();
-    }
-
-    componentDidMount() {
+    getHttpRequestData(requestUrl) {
         let requestHeaders = {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         };
-        let requestUrl = '/cars/top10';
 
         fetch(requestUrl, {
             headers: requestHeaders
@@ -44,6 +39,11 @@ class Top10CarListComponent extends Component {
                     })
             }
             );
+    }
+
+    componentDidMount() {
+        let requestUrl = '/cars/top10';
+        this.getHttpRequestData(requestUrl);
     }
     render() {
         if (this.state.error) {
