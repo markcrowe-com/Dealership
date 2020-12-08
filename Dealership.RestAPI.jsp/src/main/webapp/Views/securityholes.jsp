@@ -2,14 +2,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Start Page</title>
+		<title>Security Holes</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
 	<body>
-		<h1>Dealership</h1>
+		<h1>Security Holes</h1>
 		<table>
-			<tr><td><a href="cars">Cars</a></td></tr>
-			<tr><td><a href="carmodels">Car Models</a></td></tr>
+			<tr><td><input name="sql" type="text"/></td></tr>
+			<tr><td><input name="sql" type="text"/></td></tr>
+			<tr><td><input name="sql" type="text"/></td></tr>
 		</table>
 	</body>
 </html>

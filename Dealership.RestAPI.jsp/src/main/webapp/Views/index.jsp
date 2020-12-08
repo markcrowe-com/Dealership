@@ -10,6 +10,9 @@
 		<table>
 			<tr><td><a href="cars">Cars</a></td></tr>
 			<tr><td><a href="carmodels">Car Models</a></td></tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr><td><a href="securityholes">Security Holes</a></td></tr>
+
 		</table>
 	</body>
 </html>
