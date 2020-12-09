@@ -27,6 +27,7 @@ import javax.validation.constraints.Size;
 @NamedQueries(
 {
     @NamedQuery(name = "Car.findAll", query = "SELECT c FROM Car c"),
+    @NamedQuery(name = "Car.findOrderByValueDesc", query = "SELECT c FROM Car c ORDER BY c.value DESC"),
     @NamedQuery(name = "Car.findById", query = "SELECT c FROM Car c WHERE c.id = :id"),
     @NamedQuery(name = "Car.findByRegistrationNumber", query = "SELECT c FROM Car c WHERE c.registrationNumber = :registrationNumber"),
     @NamedQuery(name = "Car.findByValue", query = "SELECT c FROM Car c WHERE c.value = :value"),

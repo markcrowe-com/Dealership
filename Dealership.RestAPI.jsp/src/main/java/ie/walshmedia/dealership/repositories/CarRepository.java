@@ -20,7 +20,7 @@ public class CarRepository
 {
 	//	@PersistenceContext(unitName = "Dealership")
 
-	private EntityManager entityManager;
+	private final EntityManager entityManager;
 
 	public CarRepository()
 	{
@@ -32,11 +32,31 @@ public class CarRepository
 		return getEntityManager().find(Car.class, id);
 	}
 
+	public  List<Car> getCarByRegistrationNumber(String registrationNumber)
+	{
+		return getEntityManager().createNamedQuery("Car.findByRegistrationNumber", Car.class).setParameter("registrationNumber", registrationNumber).getResultList();
+	}
+
+	public Car getCarByValue(String registrationNumber)
+	{
+		return getEntityManager().find(Car.class, registrationNumber);
+	}
+
 	public List<Car> getCars()
 	{
 		CriteriaQuery criteriaQuery = getEntityManager().getCriteriaBuilder().createQuery();
 		criteriaQuery.select(criteriaQuery.from(Car.class));
 		return getEntityManager().createQuery(criteriaQuery).getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public void findAllOrderedByName()
+	{
+	}
+
+	public List<Car> getTop10Cars()
+	{
+		return getEntityManager().createNamedQuery("Car.findOrderByValueDesc", Car.class).setMaxResults(10).getResultList();
 	}
 
 	public List<Car> getCarsRange(int[] range)
