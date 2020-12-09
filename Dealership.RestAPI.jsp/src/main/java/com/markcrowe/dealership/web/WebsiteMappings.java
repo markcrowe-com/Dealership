@@ -11,4 +11,5 @@ public class WebsiteMappings
 	public static final String CarMakers = "/carmakers";
 	public static final String CarModels = "/carmodels";
 	public static final String Colors = "/colors";
+	public static final String SecurityHoles = "/securityholes";
 }

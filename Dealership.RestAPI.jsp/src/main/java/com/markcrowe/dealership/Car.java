@@ -21,7 +21,8 @@ import javax.validation.constraints.Size;
 			@NamedQuery(name = "Car.findById", query = "SELECT c FROM Car c WHERE c.id = :id"),
 			@NamedQuery(name = "Car.findByRegistrationNumber", query = "SELECT c FROM Car c WHERE c.registrationNumber = :registrationNumber"),
 			@NamedQuery(name = "Car.findByValue", query = "SELECT c FROM Car c WHERE c.value = :value"),
-			@NamedQuery(name = "Car.findByOwnerName", query = "SELECT c FROM Car c WHERE c.ownerName = :ownerName")
+			@NamedQuery(name = "Car.findByOwnerName", query = "SELECT c FROM Car c WHERE c.ownerName = :ownerName"),
+			@NamedQuery(name = "Car.findOrderByValueDesc", query = "SELECT c FROM Car c ORDER BY c.value DESC")
 		})
 public class Car implements Serializable
 {
