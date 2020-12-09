@@ -17,4 +17,11 @@ public class WebSiteController
 		String viewName = WebsitePageViews.HomePage;
 		return new ModelAndView(viewName);
 	}
-}
+	@RequestMapping(WebsiteMappings.SecurityHoles)
+	public ModelAndView getSecurityHoles()
+	{
+		System.out.println("getHomePage");
+
+		String viewName = WebsitePageViews.SecurityHoles;
+		return new ModelAndView(viewName);
+	}}

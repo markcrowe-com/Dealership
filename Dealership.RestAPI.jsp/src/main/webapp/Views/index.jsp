@@ -13,6 +13,8 @@
 			<tr><td><a href="carmakers">Car Makers</a></td></tr>
 			<tr><td><a href="carmodels">Car Models</a></td></tr>
 			<tr><td><a href="colors">Colors</a></td></tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr><td><a href="securityholes">Security Holes</a></td></tr>
 		</table>
 	</body>
 </html>
